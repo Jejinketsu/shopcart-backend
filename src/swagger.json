@@ -1,0 +1,99 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Shopcart API Documentation",
+    "description": "This is the documentation for the Shopcart API",
+    "version": "1.0.0",
+    "contact": {
+      "email": "jede@email.com"
+    }
+  },
+  "paths": {
+    "/products": {
+      "post": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Creates a new Product",
+        "description": "Creates a new Product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "tag": {
+                    "type": "string"
+                  },
+                  "unity": {
+                    "type": "string"
+                  },
+                  "market": {
+                    "type": "string"
+                  }
+                },
+                "exemple": {
+                  "name": "Product 1",
+                  "description": "Product 1 description"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product created"
+          },
+          "500": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Returns all Products",
+        "description": "Returns all Products",
+        "responses": {
+          "200": {
+            "description": "Products returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "tag": {
+                        "type": "string"
+                      },
+                      "unity": {
+                        "type": "string"
+                      },
+                      "market": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}
