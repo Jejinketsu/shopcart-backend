@@ -14,7 +14,7 @@ interface IRequest {
     id: string;
     name: string;
     tag?: string;
-    unity: string;
+    unityId: number;
     market?: string;
   }[];
   transactions: {
@@ -55,8 +55,8 @@ class CreatePurchaseUseCase {
 
     this.productRepository.createMany(
       products.map((product) => {
-        const { name, tag, unity, market } = product;
-        return { name, tag, unity, market };
+        const { name, tag, unityId, market } = product;
+        return { name, tag, unityId, market };
       })
     );
 

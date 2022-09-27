@@ -2,22 +2,22 @@ import { v4 as uuidv4 } from "uuid";
 
 interface IProduct {
   name: string;
-  tag?: string;
-  unity: string;
-  market?: string;
+  tag?: string | null;
+  unityId: number;
+  market?: string | null;
 }
 
 class Product {
   id!: string;
   name: string;
   tag!: string;
-  unity: string;
+  unityId: number;
   market!: string;
 
-  constructor({ name, tag, unity, market }: IProduct) {
+  constructor({ name, tag, unityId, market }: IProduct) {
     if (!this.id) this.id = uuidv4();
     this.name = name;
-    this.unity = unity;
+    this.unityId = unityId;
 
     if (tag) this.tag = tag;
     if (market) this.market = market;

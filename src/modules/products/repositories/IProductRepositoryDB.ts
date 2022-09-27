@@ -8,10 +8,10 @@ interface ICreateProductDTO {
 }
 
 interface IProductRepository {
-  create(data: ICreateProductDTO): void;
-  createMany(data: ICreateProductDTO[]): void;
-  findByName(name: string): Product | undefined;
-  list(): Product[];
+  create(data: ICreateProductDTO): Promise<void>;
+  createMany(data: ICreateProductDTO[]): Promise<void>;
+  findByName(name: string): Promise<Product | undefined>;
+  list(): Promise<Product[]>;
 }
 
 export { IProductRepository, ICreateProductDTO };

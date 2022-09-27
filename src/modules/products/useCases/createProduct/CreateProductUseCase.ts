@@ -1,23 +1,24 @@
-import { IProductRepository } from "../../repositories/IProductRepository";
+import { AppError } from "../../../../errors/AppError";
+import { IProductRepository } from "../../repositories/IProductRepositoryDB";
 
 interface IRequest {
   name: string;
   tag?: string;
-  unity: string;
+  unityId: number;
   market?: string;
 }
 
 class CreateProductUseCase {
   constructor(private productRepository: IProductRepository) {}
 
-  execute({ name, tag, unity, market }: IRequest) {
-    const productAlreadyExists = this.productRepository.findByName(name);
+  async execute({ name, tag, unityId, market }: IRequest) {
+    const productAlreadyExists = await this.productRepository.findByName(name);
 
     if (productAlreadyExists) {
-      throw new Error("Product already exists!");
+      throw new AppError("Product already exists!");
     }
 
-    this.productRepository.create({ name, tag, unity, market });
+    await this.productRepository.create({ name, tag, unityId, market });
   }
 }
 

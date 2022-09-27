@@ -1,12 +1,11 @@
 import { Product } from "../../models/Product";
-import { IProductRepository } from "../../repositories/IProductRepository";
+import { IProductRepository } from "../../repositories/IProductRepositoryDB";
 
 class ListProductsUseCase {
   constructor(private productsRepository: IProductRepository) {}
 
-  execute(): Product[] {
-    const products = this.productsRepository.list();
-
+  async execute(): Promise<Product[]> {
+    const products = await this.productsRepository.list();
     return products;
   }
 }
